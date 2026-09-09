@@ -1,0 +1,10 @@
+runs/
+jobs/
+data/minted/
+vendor/
+.venv/
+__pycache__/
+*.pyc
+.env
+.DS_Store
+dist/

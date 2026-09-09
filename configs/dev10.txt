@@ -1,0 +1,12 @@
+# quick iteration set (first 10 of dev40)
+# 10 task ids — do not edit by hand.
+2004_easy_01_buy_only_baseline
+2014_easy_02_buy_only_immediate_invoicing
+2017_easy_03_buy_only_fixed_downpayment
+2024_easy_04_buy_only_percentage_downpayment
+2035_medium_05_screened_buy_only_all_seeded
+2050_medium_06_screened_buy_only_mixed_seeded
+2058_medium_07_screened_buy_only_mixed_seeded_invoicing
+2070_medium_08_single_bom_single_workcenter
+2075_medium_09_single_bom_lowest_cost
+2086_medium_10_single_bom_split_by_capacity

@@ -1,0 +1,104 @@
+# Harness configurations under test.
+#
+# `runner: pi` means Harbor's built-in pi agent (the generic coding-agent baseline).
+# Every other config runs harness/agent.py and reads the keys below:
+#
+#   tools       which tool schemas are exposed to the model (harness/tools.py)
+#   prompts     which files under harness/prompts/ are concatenated into the system prompt
+#   lib         which modules under harness/lib/ are preloaded into the kernel;
+#               a missing module is tolerated and reported in result.json.lib_active
+#   briefing    render prompts/briefing.py into the first user message
+#   ledger_k    reinject plan.summary() every k steps (0 disables)
+#   finish_gate finish() refuses while hard checks fail (up to 3 attempts)
+#
+# `inherit` copies the named config and overrides the keys given.
+#
+# Caps are shared by every non-pi config so the comparison is about the harness, not
+# about how long each one is allowed to run.
+
+defaults:
+  step_cap: 150            # pi has no turn cap at all; 150 is well above its measured
+                           # eval100 distribution (median 27, p90 45, max 70 steps)
+  # Total input tokens (cached + uncached) per trajectory. Set from config A's measured
+  # distribution over eval100: median 1.19M, p90 2.37M, max 5.12M. 1.5M sits above the
+  # median and below p90, so it bounds the flailing tail — which is where 72% of the
+  # spend went — without touching a typical trajectory. Config A is exempt: pi has no
+  # such cap, and adding one would break comparability with the published numbers.
+  # Raised from 1.5M: it bound on 9 of 40 C_full trials while the uncapped baseline
+  # averaged 1.20M, so the cap was truncating work the comparison lets pi finish. 3M sits
+  # above config A's eval100 p90 (2.37M) and still bounds a runaway.
+  token_cap: 3000000
+  bash_timeout_s: 120
+  # 120s destroyed a trial's state mid-execution: `plan_fn(erp)` creating sales orders,
+  # MOs and POs for five customers over XML-RPC runs for minutes, the kernel timed out
+  # and rebuilt its namespace, and the model had to redo everything step by step. The
+  # cap exists to catch a hung call, not a long one.
+  kernel_timeout_s: 600
+  time_budget_s: 3300      # the tasks' agent timeout is 3600 s; the loop warns at 70% and 88%
+                           # of this so a plan is executed before the cut-off (a dev40 trial
+                           # was killed at step 40 with five plans compared and none executed)
+  finish_gate: false
+  ledger_k: 0
+  briefing: false
+  lib: []
+
+A_pi:
+  runner: pi
+  # Pinned: Harbor's default is @latest, which moved from 0.84.1 to 0.84.4 during Phase 0.
+  pi_version: "0.84.4"
+
+B_bash:
+  tools: [bash, finish]
+  prompts: [contract_min]
+  lib: []
+  briefing: false
+  ledger_k: 0
+
+C_full:
+  tools: [python, bash, show, delegate, finish]
+  prompts: [contract, playbook, playbook_delegate, schema_card, library_docs]
+  lib: [erp, db, state, check, plan, brief, delegate]
+  briefing: true
+  ledger_k: 15
+  finish_gate: true
+  # Delegation (P3.4): a sub-agent is a fresh loop with a python-only tool in its own
+  # kernel namespace, erp read-only, sharing the trial's token cap and clock.
+  delegate_prompts: [delegate_contract, playbook, schema_card, library_docs]
+  delegate_max_steps: 40      # default per sub-agent; the model may ask for fewer or more
+  delegate_step_ceiling: 60   # never more than this, whatever the model asks for
+
+# C_full with the audit delegation made mandatory: contract step 4 requires one
+# delegate(...) audit of the main database against the instruction before finish, and
+# finish refuses (up to the usual three times) until a sub-agent report exists. Every
+# other key is C_full's. Added 2026-09-09 after dev5 showed 0 voluntary delegations.
+C_full_audit:
+  inherit: C_full
+  prompts: [contract_audit, playbook, playbook_delegate, schema_card, library_docs]
+  finish_requires_delegation: true
+
+C_minus_dry:
+  inherit: C_full
+  lib: [erp, db, plan, brief, delegate]
+  finish_gate: false
+
+C_minus_doc:
+  inherit: C_full
+  prompts: [contract, library_docs]
+  briefing: false
+
+# The ablation behind the RLM claim: identical to C_full except that the recursive
+# sub-agent call does not exist — no tool, no module, no playbook section.
+C_minus_del:
+  inherit: C_full
+  tools: [python, bash, show, finish]
+  prompts: [contract, playbook, schema_card, library_docs]
+  lib: [erp, db, state, check, plan, brief]
+
+C_minus_brief:
+  inherit: C_full
+  briefing: false
+  lib: [erp, db, state, check, plan, delegate]
+
+B_plus_doc:
+  inherit: B_bash
+  prompts: [contract_min, playbook]

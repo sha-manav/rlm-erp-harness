@@ -1,0 +1,7 @@
+# smoke set (first 5 of dev40)
+# 5 task ids — do not edit by hand.
+2004_easy_01_buy_only_baseline
+2014_easy_02_buy_only_immediate_invoicing
+2017_easy_03_buy_only_fixed_downpayment
+2024_easy_04_buy_only_percentage_downpayment
+2035_medium_05_screened_buy_only_all_seeded

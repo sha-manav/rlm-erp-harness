@@ -1,0 +1,66 @@
+# Model endpoints. Secrets live in .env / the environment, never here.
+#
+# Both models are served by OpenRouter so that config A (pi, which speaks the
+# `openrouter` provider natively) and configs B/C (our OpenAI-compatible loop) hit the
+# same endpoint and the same weights. `pi_model` is the string Harbor passes to pi as
+# `-m provider/model`.
+#
+# temperature: null means "do not send the field" — pi never sets temperature, so our
+# harness must not either, or the configs would differ on more than the harness.
+# Pricing is USD per million tokens, used only for the cost-per-task metric.
+#
+# provider_routing is sent by our own loop (harness/llm.py) as the OpenRouter `provider`
+# field. Two reasons, both measured:
+#   cost     GLM-5.1 has 14 upstreams whose cache-read price spans 6x ($0.098-$0.600 per
+#            Mtok), and cache reads are ~80% of our input tokens.
+#   validity upstreams differ in quantization (fp8 vs fp4). Letting requests roam means
+#            different configs can run against different weights, which breaks the
+#            same-model-across-configs rule. Pinning to fp8 removes the confound.
+# pi (config A) offers no such hook, so the same restriction is set account-wide in the
+# OpenRouter dashboard; that is what covers config A.
+#
+# role: which model a run should use by default. Iteration is done on `small` because a
+# dev trial costs ~$0.10 there versus ~$0.73 on `big`; only dev-curve points that go into
+# the write-up need `big`.
+
+big:
+  base_url: https://openrouter.ai/api/v1
+  api_key_env: MODEL_BIG_API_KEY
+  model: z-ai/glm-5.1
+  pi_model: openrouter/z-ai/glm-5.1
+  temperature: null
+  # 4096 truncated the model mid-tool-call: a `python` call carrying a plan function is
+  # easily longer than that, and a cut-off call leaves unparseable JSON in
+  # tool_calls.function.arguments, which the provider rejects with HTTP 400 and the
+  # trajectory dies. pi sets no max_tokens at all (provider default), so a generous value
+  # is also the closer match to the baseline.
+  max_tokens: 16384
+  supports_prompt_cache: null      # measured in P0.4
+  pricing_per_mtok: {input: 0.966, cached_input: null, output: 3.036}
+  leaderboard_pass_at_1: 35.8      # published coding-mode number for GLM-5.1
+  # GMICloud only. Chutes has the cheapest cache-read price ($0.098/Mtok) and barely honours
+  # the cache: measured 6% hit rate over an 8-turn growing conversation against GMICloud's
+  # 46% (61% after the two cold-start writes), and a full dev5 trial routed entirely to
+  # Chutes cached 39% where pi -- which lands on GMICloud 9 times in 10 -- caches 83%. A
+  # cheap cache read is worth nothing if the read never happens.
+  # GMICloud first (80% cache hits measured); Baidu and StreamLake are fp8 at the same price
+  # and take over only when a GMICloud request fails. 2026-09-02: two dev40 launches died to
+  # connection resets on a single-provider pin; the same day all three completed long
+  # (7-12k token) requests cleanly. `order` makes the list a preference, not a pool.
+  provider_routing: {order: [gmicloud, baidu, streamlake], only: [gmicloud, baidu, streamlake],
+                     allow_fallbacks: false, quantizations: [fp8]}
+  est_cost_per_trial_usd: 0.73     # measured over 49 eval100 trials of config A (dev5's $0.23 was
+                                   # unrepresentative: dev5 is the five easiest patterns)
+
+small:
+  base_url: https://openrouter.ai/api/v1
+  api_key_env: MODEL_SMALL_API_KEY
+  model: qwen/qwen3-32b
+  pi_model: openrouter/qwen/qwen3-32b
+  temperature: null
+  max_tokens: 16384
+  supports_prompt_cache: null
+  pricing_per_mtok: {input: 0.08, cached_input: null, output: 0.28}
+  leaderboard_pass_at_1: null
+  provider_routing: {allow_fallbacks: true, quantizations: [fp8]}
+  est_cost_per_trial_usd: 0.05     # ~7x cheaper per token than GLM-5.1; re-measure after the first run

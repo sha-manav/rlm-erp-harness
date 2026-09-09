@@ -1,0 +1,43 @@
+[project]
+name = "erp-harness"
+version = "0.1.0"
+description = "A domain-specific agent harness for ERP-Bench (Odoo 19), measured against the generic pi coding-agent harness."
+requires-python = ">=3.11"
+dependencies = [
+    "pyyaml>=6.0",
+    "httpx>=0.27",
+    "tiktoken>=0.7",
+]
+
+[project.optional-dependencies]
+analysis = [
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "matplotlib>=3.8",
+    "statsmodels>=0.14",
+]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["harness*", "scripts*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "W", "F", "I", "B", "C4", "UP"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "live: requires a running dev task container (set ERP_DEV_CONTAINER)",
+]

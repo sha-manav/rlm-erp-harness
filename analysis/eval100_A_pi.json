@@ -1,0 +1,726 @@
+{
+ "set": "eval100",
+ "runs": [
+  "runs/A_pi__big__eval100__20260901T071739Z",
+  "runs/A_pi__big__eval100__20260901T115715Z",
+  "runs/A_pi__big__eval100__20260901T213641Z"
+ ],
+ "summary": {
+  "n": 100,
+  "of": 100,
+  "passes": 39,
+  "pass_rate": 39.0,
+  "mean_reward": 54.735299999999995,
+  "mean_steps": 27.68,
+  "input_tokens_per_task": 977665.97,
+  "cache_pct": 75.26824320171438,
+  "output_tokens_per_task": 37227.95,
+  "cost_per_task": 0.62427713,
+  "terminal": {
+   "finish": 96,
+   "timeout": 4
+  }
+ },
+ "tasks": {
+  "2003_easy_01_buy_only_baseline": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 11,
+   "cost_usd": 0.120684,
+   "terminal_reason": "finish"
+  },
+  "2020_easy_03_buy_only_fixed_downpayment": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 23,
+   "cost_usd": 0.239338,
+   "terminal_reason": "finish"
+  },
+  "2021_easy_03_buy_only_fixed_downpayment": {
+   "pass": false,
+   "reward": 97.5,
+   "steps": 22,
+   "cost_usd": 0.431637,
+   "terminal_reason": "finish"
+  },
+  "2031_easy_04_buy_only_percentage_downpayment": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 21,
+   "cost_usd": 0.188076,
+   "terminal_reason": "finish"
+  },
+  "2040_medium_05_screened_buy_only_all_seeded": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 12,
+   "cost_usd": 0.224548,
+   "terminal_reason": "finish"
+  },
+  "2046_medium_06_screened_buy_only_mixed_seeded": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 10,
+   "cost_usd": 0.111879,
+   "terminal_reason": "finish"
+  },
+  "2049_medium_06_screened_buy_only_mixed_seeded": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 14,
+   "cost_usd": 0.334546,
+   "terminal_reason": "finish"
+  },
+  "2055_medium_07_screened_buy_only_mixed_seeded_invoicing": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 15,
+   "cost_usd": 0.22547,
+   "terminal_reason": "finish"
+  },
+  "2060_medium_07_screened_buy_only_mixed_seeded_invoicing": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 23,
+   "cost_usd": 0.262953,
+   "terminal_reason": "finish"
+  },
+  "2063_medium_07_screened_buy_only_mixed_seeded_invoicing": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 11,
+   "cost_usd": 0.121438,
+   "terminal_reason": "finish"
+  },
+  "2077_medium_09_single_bom_lowest_cost": {
+   "pass": false,
+   "reward": 98.69,
+   "steps": 44,
+   "cost_usd": 1.274864,
+   "terminal_reason": "finish"
+  },
+  "2080_medium_09_single_bom_lowest_cost": {
+   "pass": false,
+   "reward": 20.0,
+   "steps": 23,
+   "cost_usd": 0.572462,
+   "terminal_reason": "finish"
+  },
+  "2087_medium_10_single_bom_split_by_capacity": {
+   "pass": false,
+   "reward": 54.65,
+   "steps": 39,
+   "cost_usd": 0.749115,
+   "terminal_reason": "finish"
+  },
+  "2091_medium_10_single_bom_split_by_capacity": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 45,
+   "cost_usd": 0.938244,
+   "terminal_reason": "finish"
+  },
+  "2092_medium_10_single_bom_split_by_capacity": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 40,
+   "cost_usd": 0.933097,
+   "terminal_reason": "finish"
+  },
+  "2094_medium_10_single_bom_split_by_capacity": {
+   "pass": false,
+   "reward": 22.66,
+   "steps": 37,
+   "cost_usd": 1.441241,
+   "terminal_reason": "finish"
+  },
+  "2102_hard_11_restricted_subassembly_qualified_workcenters": {
+   "pass": false,
+   "reward": 19.09,
+   "steps": 46,
+   "cost_usd": 1.246369,
+   "terminal_reason": "finish"
+  },
+  "2112_medium_12_single_subassembly_lowest_cost": {
+   "pass": false,
+   "reward": 20.38,
+   "steps": 31,
+   "cost_usd": 0.7705,
+   "terminal_reason": "finish"
+  },
+  "2121_medium_13_single_subassembly_qualified_workcenters": {
+   "pass": false,
+   "reward": 20.0,
+   "steps": 36,
+   "cost_usd": 1.05377,
+   "terminal_reason": "finish"
+  },
+  "2126_medium_13_single_subassembly_qualified_workcenters": {
+   "pass": false,
+   "reward": 20.0,
+   "steps": 70,
+   "cost_usd": 1.918968,
+   "terminal_reason": "finish"
+  },
+  "2129_medium_14_single_subassembly_shared_overflow_capacity": {
+   "pass": false,
+   "reward": 20.0,
+   "steps": 32,
+   "cost_usd": 0.93204,
+   "terminal_reason": "finish"
+  },
+  "2137_medium_14_single_subassembly_shared_overflow_capacity": {
+   "pass": false,
+   "reward": 20.38,
+   "steps": 36,
+   "cost_usd": 0.864209,
+   "terminal_reason": "finish"
+  },
+  "2139_medium_14_single_subassembly_shared_overflow_capacity": {
+   "pass": false,
+   "reward": 20.0,
+   "steps": 32,
+   "cost_usd": 0.795755,
+   "terminal_reason": "finish"
+  },
+  "2159_hard_16_serial_subassemblies_branch_assigned": {
+   "pass": false,
+   "reward": 22.92,
+   "steps": 45,
+   "cost_usd": 1.484814,
+   "terminal_reason": "finish"
+  },
+  "2166_hard_17_shared_component_subassemblies_branch_assigned": {
+   "pass": true,
+   "reward": 99.99,
+   "steps": 28,
+   "cost_usd": 0.912791,
+   "terminal_reason": "finish"
+  },
+  "2176_medium_18_manufacture_only_policy_forbidden": {
+   "pass": true,
+   "reward": 99.27,
+   "steps": 27,
+   "cost_usd": 0.839422,
+   "terminal_reason": "finish"
+  },
+  "2179_medium_18_manufacture_only_policy_forbidden": {
+   "pass": false,
+   "reward": 98.53,
+   "steps": 29,
+   "cost_usd": 0.830622,
+   "terminal_reason": "finish"
+  },
+  "2184_medium_19_manufacture_only_no_buy_route": {
+   "pass": false,
+   "reward": 94.75,
+   "steps": 37,
+   "cost_usd": 1.012949,
+   "terminal_reason": "finish"
+  },
+  "2187_medium_19_manufacture_only_no_buy_route": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 19,
+   "cost_usd": 0.396435,
+   "terminal_reason": "finish"
+  },
+  "2188_medium_19_manufacture_only_no_buy_route": {
+   "pass": false,
+   "reward": 20.18,
+   "steps": 48,
+   "cost_usd": 1.131777,
+   "terminal_reason": "finish"
+  },
+  "2197_medium_20_manufacture_only_no_available_vendors": {
+   "pass": true,
+   "reward": 99.12,
+   "steps": 17,
+   "cost_usd": 0.712529,
+   "terminal_reason": "finish"
+  },
+  "2201_medium_20_manufacture_only_no_available_vendors": {
+   "pass": false,
+   "reward": 20.18,
+   "steps": 30,
+   "cost_usd": 0.782463,
+   "terminal_reason": "finish"
+  },
+  "2203_medium_20_manufacture_only_no_available_vendors": {
+   "pass": false,
+   "reward": 98.21,
+   "steps": 27,
+   "cost_usd": 0.534647,
+   "terminal_reason": "finish"
+  },
+  "2209_medium_21_single_bom_lowest_cost_screened_mixed_seeded": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 26,
+   "cost_usd": 0.465441,
+   "terminal_reason": "finish"
+  },
+  "2216_medium_21_single_bom_lowest_cost_screened_mixed_seeded": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 27,
+   "cost_usd": 0.956543,
+   "terminal_reason": "finish"
+  },
+  "2225_medium_22_single_bom_split_by_capacity_invoicing": {
+   "pass": false,
+   "reward": 89.61,
+   "steps": 23,
+   "cost_usd": 0.746585,
+   "terminal_reason": "finish"
+  },
+  "2228_medium_22_single_bom_split_by_capacity_invoicing": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 27,
+   "cost_usd": 0.754936,
+   "terminal_reason": "finish"
+  },
+  "2230_hard_23_restricted_subassembly_qualified_workcenters_screened_all_seeded": {
+   "pass": false,
+   "reward": 3.08,
+   "steps": 27,
+   "cost_usd": 1.325613,
+   "terminal_reason": "finish"
+  },
+  "2234_hard_23_restricted_subassembly_qualified_workcenters_screened_all_seeded": {
+   "pass": false,
+   "reward": 20.77,
+   "steps": 34,
+   "cost_usd": 0.93059,
+   "terminal_reason": "finish"
+  },
+  "2241_hard_24_single_subassembly_shared_overflow_capacity_screened_invoicing": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 15,
+   "cost_usd": 0.272409,
+   "terminal_reason": "finish"
+  },
+  "2247_hard_24_single_subassembly_shared_overflow_capacity_screened_invoicing": {
+   "pass": false,
+   "reward": 97.11,
+   "steps": 35,
+   "cost_usd": 0.655489,
+   "terminal_reason": "finish"
+  },
+  "2251_hard_25_shared_component_subassemblies_branch_assigned_screened_all_seeded": {
+   "pass": false,
+   "reward": 22.67,
+   "steps": 16,
+   "cost_usd": 0.5449,
+   "terminal_reason": "finish"
+  },
+  "2252_hard_25_shared_component_subassemblies_branch_assigned_screened_all_seeded": {
+   "pass": false,
+   "reward": 23.2,
+   "steps": 28,
+   "cost_usd": 0.824844,
+   "terminal_reason": "finish"
+  },
+  "2260_hard_25_shared_component_subassemblies_branch_assigned_screened_all_seeded": {
+   "pass": false,
+   "reward": 23.82,
+   "steps": 25,
+   "cost_usd": 0.766463,
+   "terminal_reason": "finish"
+  },
+  "2266_easy_26_buy_only_net_30_no_adjacent_data": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 28,
+   "cost_usd": 0.191213,
+   "terminal_reason": "finish"
+  },
+  "2273_easy_repair_plan_easy": {
+   "pass": false,
+   "reward": 21.09,
+   "steps": 20,
+   "cost_usd": 0.426218,
+   "terminal_reason": "finish"
+  },
+  "2277_easy_repair_plan_easy": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 14,
+   "cost_usd": 0.254017,
+   "terminal_reason": "finish"
+  },
+  "2289_medium_repair_plan_medium": {
+   "pass": true,
+   "reward": 99.01,
+   "steps": 25,
+   "cost_usd": 0.616642,
+   "terminal_reason": "finish"
+  },
+  "2294_hard_repair_plan_hard": {
+   "pass": false,
+   "reward": 20.38,
+   "steps": 54,
+   "cost_usd": 1.66737,
+   "terminal_reason": "finish"
+  },
+  "2002_easy_01_buy_only_baseline": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 22,
+   "cost_usd": 0.261602,
+   "terminal_reason": "finish"
+  },
+  "2005_easy_01_buy_only_baseline": {
+   "pass": false,
+   "reward": 20.97,
+   "steps": 29,
+   "cost_usd": 0.445596,
+   "terminal_reason": "finish"
+  },
+  "2008_easy_02_buy_only_immediate_invoicing": {
+   "pass": false,
+   "reward": 0.0,
+   "steps": 12,
+   "cost_usd": 0.019388,
+   "terminal_reason": "finish"
+  },
+  "2009_easy_02_buy_only_immediate_invoicing": {
+   "pass": false,
+   "reward": 0.0,
+   "steps": 9,
+   "cost_usd": 0.02872,
+   "terminal_reason": "finish"
+  },
+  "2012_easy_02_buy_only_immediate_invoicing": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 19,
+   "cost_usd": 0.230618,
+   "terminal_reason": "finish"
+  },
+  "2025_easy_04_buy_only_percentage_downpayment": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 13,
+   "cost_usd": 0.145103,
+   "terminal_reason": "finish"
+  },
+  "2027_easy_04_buy_only_percentage_downpayment": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 13,
+   "cost_usd": 0.16871,
+   "terminal_reason": "finish"
+  },
+  "2032_medium_05_screened_buy_only_all_seeded": {
+   "pass": false,
+   "reward": 0.0,
+   "steps": 9,
+   "cost_usd": 0.012964,
+   "terminal_reason": "finish"
+  },
+  "2034_medium_05_screened_buy_only_all_seeded": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 12,
+   "cost_usd": 0.143987,
+   "terminal_reason": "finish"
+  },
+  "2044_medium_06_screened_buy_only_mixed_seeded": {
+   "pass": false,
+   "reward": 22.28,
+   "steps": 21,
+   "cost_usd": 0.291143,
+   "terminal_reason": "finish"
+  },
+  "2048_medium_06_screened_buy_only_mixed_seeded": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 24,
+   "cost_usd": 0.240334,
+   "terminal_reason": "finish"
+  },
+  "2053_medium_07_screened_buy_only_mixed_seeded_invoicing": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 23,
+   "cost_usd": 0.373611,
+   "terminal_reason": "finish"
+  },
+  "2064_medium_08_single_bom_single_workcenter": {
+   "pass": false,
+   "reward": 0.0,
+   "steps": 39,
+   "cost_usd": 0.966016,
+   "terminal_reason": "finish"
+  },
+  "2067_medium_08_single_bom_single_workcenter": {
+   "pass": false,
+   "reward": 0.0,
+   "steps": 32,
+   "cost_usd": 0.947622,
+   "terminal_reason": "timeout"
+  },
+  "2073_medium_08_single_bom_single_workcenter": {
+   "pass": false,
+   "reward": 0.0,
+   "steps": 14,
+   "cost_usd": 0.11042,
+   "terminal_reason": "finish"
+  },
+  "2074_medium_08_single_bom_single_workcenter": {
+   "pass": false,
+   "reward": 19.55,
+   "steps": 41,
+   "cost_usd": 1.16366,
+   "terminal_reason": "timeout"
+  },
+  "2076_medium_09_single_bom_lowest_cost": {
+   "pass": false,
+   "reward": 0.0,
+   "steps": 29,
+   "cost_usd": 0.267863,
+   "terminal_reason": "finish"
+  },
+  "2108_medium_12_single_subassembly_lowest_cost": {
+   "pass": false,
+   "reward": 0.0,
+   "steps": 12,
+   "cost_usd": 0.063386,
+   "terminal_reason": "finish"
+  },
+  "2114_medium_12_single_subassembly_lowest_cost": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 28,
+   "cost_usd": 1.073866,
+   "terminal_reason": "finish"
+  },
+  "2118_medium_13_single_subassembly_qualified_workcenters": {
+   "pass": false,
+   "reward": 0.0,
+   "steps": 23,
+   "cost_usd": 0.383856,
+   "terminal_reason": "finish"
+  },
+  "2136_medium_14_single_subassembly_shared_overflow_capacity": {
+   "pass": false,
+   "reward": 0.0,
+   "steps": 14,
+   "cost_usd": 0.091444,
+   "terminal_reason": "finish"
+  },
+  "2141_hard_15_parallel_subassemblies_branch_assigned": {
+   "pass": false,
+   "reward": 0.0,
+   "steps": 11,
+   "cost_usd": 0.092972,
+   "terminal_reason": "finish"
+  },
+  "2148_hard_15_parallel_subassemblies_branch_assigned": {
+   "pass": false,
+   "reward": 0.0,
+   "steps": 24,
+   "cost_usd": 0.224669,
+   "terminal_reason": "finish"
+  },
+  "2149_hard_15_parallel_subassemblies_branch_assigned": {
+   "pass": false,
+   "reward": 0.0,
+   "steps": 33,
+   "cost_usd": 0.882552,
+   "terminal_reason": "timeout"
+  },
+  "2164_hard_17_shared_component_subassemblies_branch_assigned": {
+   "pass": false,
+   "reward": 0.0,
+   "steps": 15,
+   "cost_usd": 0.063394,
+   "terminal_reason": "finish"
+  },
+  "2169_hard_17_shared_component_subassemblies_branch_assigned": {
+   "pass": false,
+   "reward": 0.0,
+   "steps": 16,
+   "cost_usd": 0.383508,
+   "terminal_reason": "finish"
+  },
+  "2170_hard_17_shared_component_subassemblies_branch_assigned": {
+   "pass": false,
+   "reward": 0.0,
+   "steps": 20,
+   "cost_usd": 0.116411,
+   "terminal_reason": "finish"
+  },
+  "2174_medium_18_manufacture_only_policy_forbidden": {
+   "pass": false,
+   "reward": 21.23,
+   "steps": 29,
+   "cost_usd": 0.633945,
+   "terminal_reason": "timeout"
+  },
+  "2213_medium_21_single_bom_lowest_cost_screened_mixed_seeded": {
+   "pass": false,
+   "reward": 98.57,
+   "steps": 30,
+   "cost_usd": 1.037428,
+   "terminal_reason": "finish"
+  },
+  "2215_medium_21_single_bom_lowest_cost_screened_mixed_seeded": {
+   "pass": false,
+   "reward": 0.0,
+   "steps": 16,
+   "cost_usd": 0.201186,
+   "terminal_reason": "finish"
+  },
+  "2226_medium_22_single_bom_split_by_capacity_invoicing": {
+   "pass": false,
+   "reward": 0.0,
+   "steps": 20,
+   "cost_usd": 0.059427,
+   "terminal_reason": "finish"
+  },
+  "2267_easy_26_buy_only_net_30_no_adjacent_data": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 46,
+   "cost_usd": 0.518963,
+   "terminal_reason": "finish"
+  },
+  "2270_easy_26_buy_only_net_30_no_adjacent_data": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 24,
+   "cost_usd": 0.217397,
+   "terminal_reason": "finish"
+  },
+  "2282_medium_repair_plan_medium": {
+   "pass": false,
+   "reward": 98.36,
+   "steps": 51,
+   "cost_usd": 0.971611,
+   "terminal_reason": "finish"
+  },
+  "2019_easy_03_buy_only_fixed_downpayment": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 21,
+   "cost_usd": 0.350601,
+   "terminal_reason": "finish"
+  },
+  "2081_medium_09_single_bom_lowest_cost": {
+   "pass": false,
+   "reward": 20.0,
+   "steps": 29,
+   "cost_usd": 0.887939,
+   "terminal_reason": "finish"
+  },
+  "2098_hard_11_restricted_subassembly_qualified_workcenters": {
+   "pass": false,
+   "reward": 19.09,
+   "steps": 31,
+   "cost_usd": 1.00941,
+   "terminal_reason": "finish"
+  },
+  "2105_hard_11_restricted_subassembly_qualified_workcenters": {
+   "pass": false,
+   "reward": 20.38,
+   "steps": 52,
+   "cost_usd": 0.959473,
+   "terminal_reason": "finish"
+  },
+  "2107_medium_12_single_subassembly_lowest_cost": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 23,
+   "cost_usd": 0.625644,
+   "terminal_reason": "finish"
+  },
+  "2124_medium_13_single_subassembly_qualified_workcenters": {
+   "pass": false,
+   "reward": 19.55,
+   "steps": 45,
+   "cost_usd": 1.107343,
+   "terminal_reason": "finish"
+  },
+  "2155_hard_16_serial_subassemblies_branch_assigned": {
+   "pass": false,
+   "reward": 0.0,
+   "steps": 15,
+   "cost_usd": 0.106309,
+   "terminal_reason": "finish"
+  },
+  "2158_hard_16_serial_subassemblies_branch_assigned": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 31,
+   "cost_usd": 0.902431,
+   "terminal_reason": "finish"
+  },
+  "2177_medium_18_manufacture_only_policy_forbidden": {
+   "pass": true,
+   "reward": 99.99,
+   "steps": 47,
+   "cost_usd": 0.823403,
+   "terminal_reason": "finish"
+  },
+  "2198_medium_20_manufacture_only_no_available_vendors": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 37,
+   "cost_usd": 0.605476,
+   "terminal_reason": "finish"
+  },
+  "2218_medium_22_single_bom_split_by_capacity_invoicing": {
+   "pass": false,
+   "reward": 20.4,
+   "steps": 63,
+   "cost_usd": 1.546572,
+   "terminal_reason": "finish"
+  },
+  "2229_hard_23_restricted_subassembly_qualified_workcenters_screened_all_seeded": {
+   "pass": false,
+   "reward": 20.38,
+   "steps": 39,
+   "cost_usd": 0.884823,
+   "terminal_reason": "finish"
+  },
+  "2248_hard_24_single_subassembly_shared_overflow_capacity_screened_invoicing": {
+   "pass": true,
+   "reward": 100.0,
+   "steps": 49,
+   "cost_usd": 0.900272,
+   "terminal_reason": "finish"
+  },
+  "2274_easy_repair_plan_easy": {
+   "pass": false,
+   "reward": 21.09,
+   "steps": 14,
+   "cost_usd": 0.212583,
+   "terminal_reason": "finish"
+  },
+  "2288_medium_repair_plan_medium": {
+   "pass": false,
+   "reward": 24.38,
+   "steps": 39,
+   "cost_usd": 1.041791,
+   "terminal_reason": "finish"
+  },
+  "2293_hard_repair_plan_hard": {
+   "pass": false,
+   "reward": 21.0,
+   "steps": 34,
+   "cost_usd": 0.978276,
+   "terminal_reason": "finish"
+  },
+  "2297_hard_repair_plan_hard": {
+   "pass": true,
+   "reward": 99.07,
+   "steps": 22,
+   "cost_usd": 0.86307,
+   "terminal_reason": "finish"
+  }
+ }
+}
